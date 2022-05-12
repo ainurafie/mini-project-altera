@@ -2,7 +2,7 @@
   <v-app-bar app color="#6ca0d1" dark>
     <div class="d-flex align-center">
       <router-link to="/">
-        <img src="../assets/CYBULL.png" alt="" width="100" />
+        <img src="../assets/SANCYBU.png" alt="" width="100" />
       </router-link>
     </div>
 
