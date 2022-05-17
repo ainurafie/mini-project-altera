@@ -5,13 +5,13 @@
           class="white--text mb-2 display-1 text-xs-center"
           style="font-weight: 900; text-shadow: 3px 2px #000000"
         >
-          The social network for epic content
+          Say No to Cyeber Bullying
         </h1>
         <div
           class="white--text subheading mb-3 text-xs-center"
           style="font-weight: 900; text-shadow: 2px 2px #000000"
         >
-          Unlesh your creativity without limitations
+          
         </div>
         <v-btn class="pa-4 secondary text-no-wrap rounded-pill" dark large href="/">
           Get Started

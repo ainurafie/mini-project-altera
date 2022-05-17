@@ -7,9 +7,15 @@
     </div>
 
     <v-spacer></v-spacer>
-    <router-link to="/login" class="text-decoration-none">
+    <router-link to="/login" class="text-decoration-none" v-if="$route.name === 'LandingPage'">
       <v-btn href="" text>
         <span class="mr-2">LOGIN</span>
+      </v-btn>
+    </router-link>
+
+   <router-link to="/" class="text-decoration-none" v-else>
+      <v-btn href="" text>
+        <span class="mr-2">LOG OUT</span>
       </v-btn>
     </router-link>
   </v-app-bar>

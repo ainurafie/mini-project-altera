@@ -7,11 +7,13 @@ import HistoryPage from './views/HistoryPage'
 const routes = [
     {
         path: "/",
-        component: LandingPage
+        component: LandingPage,
+        name: "LandingPage"
     },
     {
         path: "/login",
-        component: LoginPage
+        component: LoginPage,
+        name: "Login"
     },
     {
         path: "/form",

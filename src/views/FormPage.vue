@@ -1,27 +1,27 @@
 <template>
-  <div>
-    <v-expansion-panels>
-      <v-toolbar-title class="d-flex align-center justify-center">
-        Form Pengaduan</v-toolbar-title
-      >
-      <v-expansion-panel>
-        <v-expansion-panel-header> PENGADU </v-expansion-panel-header>
-        <v-expansion-panel-content>
-          <v-container
-            class="d-flex align-center justify-center"
-            fluid
-            fill-height
-          >
-            <v-card width="50%">
-              <validation-observer ref="observer" v-slot="{ invalid }">
-                <form @submit.prevent="submit">
+  <v-container max-width="400" pt="100">
+    <v-form @submit.prevent="submit">
+      <v-expansion-panels>
+        <v-toolbar-title class="d-flex align-center justify-center">
+          Form Pengaduan</v-toolbar-title
+        >
+        <v-expansion-panel>
+          <v-expansion-panel-header> PENGADU </v-expansion-panel-header>
+          <v-expansion-panel-content>
+            <v-container
+              class="d-flex align-center justify-center"
+              fluid
+              fill-height
+            >
+              <v-card width="50%">
+                <validation-observer ref="observer">
                   <validation-provider
                     v-slot="{ errors }"
-                    name="Name"
+                    name="NamePengadu"
                     rules="required|max:25"
                   >
                     <v-text-field
-                      v-model="name"
+                      v-model="NamePengadu"
                       :counter="25"
                       :error-messages="errors"
                       label="Nama Lengkap"
@@ -30,52 +30,16 @@
                   </validation-provider>
                   <validation-provider
                     v-slot="{ errors }"
-                    name="IdNumber"
+                    name="phoneNumberPengadu"
                     :rules="{
                       required: true,
-                      digits: 16,
-                      regex: '^()\\d{14}$',
+                      digits: 13,
+                      regex: '^(62)\\d{11}$',
                     }"
                   >
                     <v-text-field
-                      v-model="IdNumber"
-                      :counter="16"
-                      :error-messages="errors"
-                      label="NIK"
-                      required
-                    ></v-text-field>
-                  </validation-provider>
-                  <validation-provider
-                    v-slot="{ errors }"
-                    name="Gender"
-                    :rules="{
-                      required: true,
-                    }"
-                  >
-                    <v-container fluid>
-                      <p>Gender</p>
-                      <v-radio-group
-                        v-model="radios"
-                        mandatory
-                        :error-messages="errors"
-                      >
-                        <v-radio label="Laki-laki" value="radio-1"></v-radio>
-                        <v-radio label="Perempuan" value="radio-2"></v-radio>
-                      </v-radio-group>
-                    </v-container>
-                  </validation-provider>
-                  <validation-provider
-                    v-slot="{ errors }"
-                    name="phoneNumber"
-                    :rules="{
-                      required: true,
-                      digits: 12,
-                      regex: '^(62)\\d{10}$',
-                    }"
-                  >
-                    <v-text-field
-                      v-model="phoneNumber"
-                      :counter="12"
+                      v-model="phoneNumberPengadu"
+                      :counter="13"
                       :error-messages="errors"
                       label="Phone Number"
                       required
@@ -83,63 +47,41 @@
                   </validation-provider>
                   <validation-provider
                     v-slot="{ errors }"
-                    name="email"
+                    name="emailPengadu"
                     rules="required|email"
                   >
                     <v-text-field
-                      v-model="email"
+                      v-model="emailPengadu"
                       :error-messages="errors"
                       label="E-mail"
                       required
                     ></v-text-field>
                   </validation-provider>
-                  <validation-provider v-slot="{ errors }" name="select">
-                    <v-select
-                      v-model="select"
-                      :items="agama"
-                      :error-messages="errors"
-                      label="Agama"
-                      data-vv-name="select"
-                      required
-                    ></v-select>
-                  </validation-provider>
-                  <v-textarea
-                    name="input-7-1"
-                    label="Alamat Lengkap"
-                    hint=""
-                  ></v-textarea>
-                  <div class="d-flex align-center justify-center">
-                    <v-btn class="mr-4" type="submit" :disabled="invalid">
-                      submit
-                    </v-btn>
-                  </div>
-                </form>
-              </validation-observer>
-            </v-card>
-          </v-container>
-        </v-expansion-panel-content>
-      </v-expansion-panel>
-    </v-expansion-panels>
+                </validation-observer>
+              </v-card>
+            </v-container>
+          </v-expansion-panel-content>
+        </v-expansion-panel>
+      </v-expansion-panels>
 
-    <v-expansion-panels>
-      <v-expansion-panel>
-        <v-expansion-panel-header> KORBAN </v-expansion-panel-header>
-        <v-expansion-panel-content>
-          <v-container
-            class="d-flex align-center justify-center"
-            fluid
-            fill-height
-          >
-            <v-card width="50%">
-              <validation-observer ref="observer" v-slot="{ invalid }">
-                <form @submit.prevent="submit">
+      <v-expansion-panels>
+        <v-expansion-panel>
+          <v-expansion-panel-header> KORBAN </v-expansion-panel-header>
+          <v-expansion-panel-content>
+            <v-container
+              class="d-flex align-center justify-center"
+              fluid
+              fill-height
+            >
+              <v-card width="50%">
+                <validation-observer ref="observer">
                   <validation-provider
                     v-slot="{ errors }"
-                    name="Name"
+                    name="NameKorban"
                     rules="required|max:25"
                   >
                     <v-text-field
-                      v-model="name"
+                      v-model="NameKorban"
                       :counter="25"
                       :error-messages="errors"
                       label="Nama Lengkap"
@@ -148,15 +90,15 @@
                   </validation-provider>
                   <validation-provider
                     v-slot="{ errors }"
-                    name="IdNumber"
+                    name="IdNumberKorban"
                     :rules="{
                       required: true,
                       digits: 16,
-                      regex: '^()\\d{14}$',
+                      regex: '^(33)\\d{14}$',
                     }"
                   >
                     <v-text-field
-                      v-model="IdNumber"
+                      v-model="IdNumberKorban"
                       :counter="16"
                       :error-messages="errors"
                       label="NIK"
@@ -165,35 +107,16 @@
                   </validation-provider>
                   <validation-provider
                     v-slot="{ errors }"
-                    name="Gender"
+                    name="phoneNumberKorban"
                     :rules="{
                       required: true,
-                    }"
-                  >
-                    <v-container fluid>
-                      <p>Gender</p>
-                      <v-radio-group
-                        v-model="radios"
-                        mandatory
-                        :error-messages="errors"
-                      >
-                        <v-radio label="Laki-laki" value="radio-1"></v-radio>
-                        <v-radio label="Perempuan" value="radio-2"></v-radio>
-                      </v-radio-group>
-                    </v-container>
-                  </validation-provider>
-                  <validation-provider
-                    v-slot="{ errors }"
-                    name="phoneNumber"
-                    :rules="{
-                      required: true,
-                      digits: 12,
-                      regex: '^(62)\\d{10}$',
+                      digits: 13,
+                      regex: '^(62)\\d{11}$',
                     }"
                   >
                     <v-text-field
-                      v-model="phoneNumber"
-                      :counter="12"
+                      v-model="phoneNumberKorban"
+                      :counter="13"
                       :error-messages="errors"
                       label="Phone Number"
                       required
@@ -201,19 +124,19 @@
                   </validation-provider>
                   <validation-provider
                     v-slot="{ errors }"
-                    name="email"
+                    name="emailKorban"
                     rules="required|email"
                   >
                     <v-text-field
-                      v-model="email"
+                      v-model="emailKorban"
                       :error-messages="errors"
                       label="E-mail"
                       required
                     ></v-text-field>
                   </validation-provider>
-                  <validation-provider v-slot="{ errors }" name="select">
+                  <validation-provider v-slot="{ errors }" name="agamaKorban">
                     <v-select
-                      v-model="select"
+                      v-model="agamaKorban"
                       :items="agama"
                       :error-messages="errors"
                       label="Agama"
@@ -222,161 +145,79 @@
                     ></v-select>
                   </validation-provider>
                   <v-textarea
-                    name="input-7-1"
+                    name="AlamatKorban"
+                    v-model="AlamatKorban"
                     label="Alamat Lengkap"
                     hint=""
                   ></v-textarea>
-                  <div class="d-flex align-center justify-center">
-                    <v-btn class="mr-4" type="submit" :disabled="invalid">
-                      submit
-                    </v-btn>
-                  </div>
-                </form>
-              </validation-observer>
-            </v-card>
-          </v-container>
-        </v-expansion-panel-content>
-      </v-expansion-panel>
-    </v-expansion-panels>
+                </validation-observer>
+              </v-card>
+            </v-container>
+          </v-expansion-panel-content>
+        </v-expansion-panel>
+      </v-expansion-panels>
 
-    <v-expansion-panels>
-      <v-expansion-panel>
-        <v-expansion-panel-header> TERADU </v-expansion-panel-header>
-        <v-expansion-panel-content>
-          <v-container
-            class="d-flex align-center justify-center"
-            fluid
-            fill-height
-          >
-            <v-card width="50%">
-              <validation-observer ref="observer" v-slot="{ invalid }">
-                <form @submit.prevent="submit">
+      <v-expansion-panels>
+        <v-expansion-panel>
+          <v-expansion-panel-header> TERADU </v-expansion-panel-header>
+          <v-expansion-panel-content>
+            <v-container
+              class="d-flex align-center justify-center"
+              fluid
+              fill-height
+            >
+              <v-card width="50%">
+                <validation-observer ref="observer">
                   <validation-provider
                     v-slot="{ errors }"
-                    name="Name"
+                    name="NameTeradu"
                     rules="required|max:25"
                   >
                     <v-text-field
-                      v-model="name"
+                      v-model="NameTeradu"
                       :counter="25"
                       :error-messages="errors"
-                      label="Nama Lengkap"
+                      label="Nama Akun"
                       required
                     ></v-text-field>
                   </validation-provider>
-                  <validation-provider
-                    v-slot="{ errors }"
-                    name="IdNumber"
-                    :rules="{
-                      required: true,
-                      digits: 16,
-                      regex: '^()\\d{14}$',
-                    }"
-                  >
-                    <v-text-field
-                      v-model="IdNumber"
-                      :counter="16"
-                      :error-messages="errors"
-                      label="NIK"
-                      required
-                    ></v-text-field>
-                  </validation-provider>
-                  <validation-provider
-                    v-slot="{ errors }"
-                    name="Gender"
-                    :rules="{
-                      required: true,
-                    }"
-                  >
-                    <v-container fluid>
-                      <p>Gender</p>
-                      <v-radio-group
-                        v-model="radios"
-                        mandatory
-                        :error-messages="errors"
-                      >
-                        <v-radio label="Laki-laki" value="radio-1"></v-radio>
-                        <v-radio label="Perempuan" value="radio-2"></v-radio>
-                      </v-radio-group>
-                    </v-container>
-                  </validation-provider>
-                  <validation-provider
-                    v-slot="{ errors }"
-                    name="phoneNumber"
-                    :rules="{
-                      required: true,
-                      digits: 12,
-                      regex: '^(62)\\d{10}$',
-                    }"
-                  >
-                    <v-text-field
-                      v-model="phoneNumber"
-                      :counter="12"
-                      :error-messages="errors"
-                      label="Phone Number"
-                      required
-                    ></v-text-field>
-                  </validation-provider>
-                  <validation-provider
-                    v-slot="{ errors }"
-                    name="email"
-                    rules="required|email"
-                  >
-                    <v-text-field
-                      v-model="email"
-                      :error-messages="errors"
-                      label="E-mail"
-                      required
-                    ></v-text-field>
-                  </validation-provider>
-                  <validation-provider v-slot="{ errors }" name="select">
+                  <validation-provider v-slot="{ errors }" name="sosmedTeradu">
                     <v-select
-                      v-model="select"
-                      :items="agama"
+                      v-model="sosmedTeradu"
+                      :items="sosmed"
                       :error-messages="errors"
-                      label="Agama"
+                      label="Platform"
                       data-vv-name="select"
                       required
                     ></v-select>
                   </validation-provider>
-                  <v-textarea
-                    name="input-7-1"
-                    label="Alamat Lengkap"
-                    hint=""
-                  ></v-textarea>
-                  <div class="d-flex align-center justify-center">
-                    <v-btn class="mr-4" type="submit" :disabled="invalid">
-                      submit
-                    </v-btn>
-                  </div>
-                </form>
-              </validation-observer>
-            </v-card>
-          </v-container>
-        </v-expansion-panel-content>
-      </v-expansion-panel>
-    </v-expansion-panels>
-    <v-textarea name="input-7-1" label="Kronologi" hint=""> </v-textarea>
+                </validation-observer>
+              </v-card>
+            </v-container>
+          </v-expansion-panel-content>
+        </v-expansion-panel>
+      </v-expansion-panels>
+    </v-form>
+    <v-textarea name="kronologi" label="Kronologi" hint="" v-model="kronologi">
+    </v-textarea>
     <v-file-input
-      v-model="files"
-      placeholder="Upload your documents"
-      label="Upload Bukti"
+      accept="image/*"
+      label="File input"
+      @input="handleFileUpload($event)"
       multiple
-      prepend-icon="mdi-paperclip"
-    >
-      <template v-slot:selection="{ text }">
-        <v-chip small label color="primary">
-          {{ text }}
-        </v-chip>
-      </template>
-    </v-file-input>
-    <div class="d-flex align-center justify-center">
-      <v-btn class="mr-4" type="submit" :disabled="invalid"> submit </v-btn>
-    </div>
-  </div>
+    ></v-file-input>
+    <router-link to="#" class="text-decoration-none">
+      <div class="d-flex align-center justify-center">
+        <v-btn class="mr-4" type="button" v-on:click="showAlert()">
+          submit
+        </v-btn>
+      </div>
+    </router-link>
+  </v-container>
 </template>
 <script>
 import { required, digits, email, max, regex } from "vee-validate/dist/rules";
+import axios from "axios";
 import {
   ValidationObserver,
   ValidationProvider,
@@ -420,18 +261,148 @@ export default {
     name: "",
     phoneNumber: "",
     email: "",
+    info: [],
     agama: ["Islam", "Kristen", "Katolik", "Konghucu", "Budha", "Hindu"],
+    sosmed: [
+      "Facebook",
+      "Twitter",
+      "Instagram",
+      "Whatsapp",
+      "Tiktok",
+      "Youtube",
+    ],
     select: null,
     checkbox: null,
     alamat: "",
     IdNumber: "",
     radios: null,
-    files: [],
+    files: null,
+    AlamatKorban: "",
+    kronologi: "",
+    uploadBukti: "gambar.jpg",
+    sosmedTerbaru: "",
+    phoneNumberPengadu: "",
+    emailPengadu: "",
+    NamePengadu: "",
+    phoneNumberKorban: "",
+    emailKorban: "",
+    NameKorban: "",
+    agamaKorban: "",
+    IdNumberKorban: "",
+    sosmedTeradu: "",
+    NameTeradu: "",
   }),
 
   methods: {
-    submit() {
-      this.$refs.observer.validate();
+    // submitFile() {
+    //   /*
+    //             Initialize the form data
+    //         */
+    //   let formData = new FormData();
+    //   /*
+    //             Add the form data we need to submit
+    //         */
+    //   formData.append("file", this.file);
+    //   /*
+    //       Make the request to the POST http://127.0.0.1:8000/api/pengaduan URL
+    //     */
+    //   axios
+    //     .post("http://127.0.0.1:8000/api/pengaduan", formData, {
+    //       headers: {
+    //         "Content-Type": "multipart/form-data",
+    //       },
+    //     })
+    //     .then((res) => {
+    //       if (res.data.error) {
+    //         console.log(res.data.data);
+    //         this.$swal({
+    //           icon: "success",
+    //           title: "Selamat",
+    //           text: res.data.data,
+    //         });
+    //       }
+
+    //       if (res.data.success) {
+    //         console.log(res.data.message);
+    //         this.$swal({
+    //           icon: "success",
+    //           title: "Selamat",
+    //           text: res.data.message,
+    //         });
+    //       }
+    //     })
+    //     .catch(function () {
+    //       console.log("FAILURE!!");
+    //     });
+    // },
+
+    /*
+        Handles a change on the file upload
+      */
+    handleFileUpload(event) {
+      this.uploadBukti = event.target.files[0].name;
+    },
+    showAlert() {
+      // Use sweetalert2
+      this.$swal({
+        title: "yakin untuk upload ?",
+        text: "Pastikan sudah sesuai !",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Submit",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // masukin fungsi axios post data dengan form-data
+
+          const formData = new FormData();
+          // ini data form nya
+          formData.append("name_pengadu", this.NamePengadu);
+          formData.append("email_pengadu", this.emailPengadu);
+          formData.append("phone_pengadu", this.phoneNumberPengadu);
+          formData.append("nama_korban", this.NameKorban);
+          formData.append("nik_korban", this.IdNumberKorban);
+          formData.append("phone_korban", this.phoneNumberKorban);
+          formData.append("email_korban", this.emailKorban);
+          formData.append("agama_korban", this.agamaKorban);
+          formData.append("alamat_korban", this.AlamatKorban);
+          formData.append("account", this.NameTeradu);
+          formData.append("platform", this.sosmedTeradu);
+          formData.append("kronologi", this.kronologi);
+          formData.append("bukti", this.uploadBukti);
+          axios
+            .post("http://127.0.0.1:8000/api/pengaduan", formData, {
+              headers: {
+                "Content-Type": "multipart/form-data",
+              },
+            })
+            .then((res) => {
+              if (res.data.error) {
+                console.log(res.data.data);
+                this.$swal({
+                  icon: "success",
+                  title: "Selamat",
+                  text: res.data.data,
+                });
+              }
+
+              if (res.data.success) {
+                console.log(res.data.message);
+                this.$swal({
+                  icon: "success",
+                  title: "Selamat",
+                  text: res.data.message,
+                });
+              }
+            })
+            //this.$swal({icon: 'success', title: 'Selamat', text: response.data.message}))
+            .catch((error) =>
+              this.$swal("Galat nih !", error.message, "error")
+            );
+          //this.$swal("Deleted!", "Your file has been deleted.", "success");
+        }
+      });
     },
   },
 };
